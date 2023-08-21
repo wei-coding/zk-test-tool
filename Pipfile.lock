@@ -1,0 +1,38 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "5c7d320251c879e400fe990380b4bbf1ee896272845122689095076feb019257"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_full_version": "3.10.11",
+            "python_version": "3.10"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "kazoo": {
+            "hashes": [
+                "sha256:800318c7f3dab648cdf616dfb25bdabeefab2a6837aa6951e0fa3ff80e656969",
+                "sha256:b73dd6829ae6b3a78cd37ba393749f9d30860dbe39debb27c36eff159949a14e"
+            ],
+            "index": "pypi",
+            "version": "==2.9.0"
+        },
+        "six": {
+            "hashes": [
+                "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
+                "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
+            "version": "==1.16.0"
+        }
+    },
+    "develop": {}
+}
