@@ -1,13 +1,14 @@
 class NameGenerator:
-    def __init__(self, n) -> None:
+    def __init__(self, n, start=0) -> None:
         self.name_list = []
         self.idx = -1
         for i in range(n):
-            if i // 26 == 0:
-                self.name_list.append(chr(ord('a') + i))
+            idx = start + i
+            if idx // 26 == 0:
+                self.name_list.append(chr(ord('a') + idx))
             else:
-                self.name_list.append(chr(ord('a') + (i // 26 - 1)) + chr(ord('a') + i % 26))
-        # print(self.name_list)
+                self.name_list.append(chr(ord('a') + (idx // 26 - 1)) + chr(ord('a') + idx % 26))
+        print(self.name_list)
 
     def next(self):
         self.idx += 1
@@ -16,4 +17,4 @@ class NameGenerator:
         return self.name_list[self.idx]
     
 if __name__ == "__main__":
-    ng = NameGenerator(100)
+    ng = NameGenerator(100, 60)
