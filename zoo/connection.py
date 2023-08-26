@@ -7,10 +7,10 @@ def zoo_client(host, port = 2181, name = "a", size = "1K", times=30, logname="te
     zk.start()
     for i in range(times):
         f = open("data/"+logname, "a+")
-        print(f"Write /{name}{i}{name}", file=f)
-        print(f"\tStart at {time.time()}", file=f)
+        log_str = f"/{name}{i}{name} {time.time()}"
         zk.create(f"/{name}{i}{name}", (i%10).to_bytes(1, 'big') * parse_size.parse(size))
-        print(f"\tFinished at {time.time()}", file=f)
+        log_str += f" {time.time()}"
+        print(log_str, file=f)
         f.close()
         time.sleep(1)
     zk.sync(f"/{name}{times-1}{name}")
