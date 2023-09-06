@@ -19,7 +19,7 @@ def zoo_read_write_test(hosts, port = 2181, name='a', size='1K', time_limit=30, 
     total_latency = 0
     while (now_time - start_time < time_limit):
         try:
-            if random.uniform(0.0, 1.0) > read_portion:
+            if random.random() > read_portion:
                 latency = time.time()
                 zk.set(f"/read_write_test/{name}", value=b"x"*parse(size))
                 latency = time.time() - latency
