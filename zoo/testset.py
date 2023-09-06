@@ -35,9 +35,3 @@ class StressTestSet:
             t.start()
         for t in self.client_list:
             t.join()
-
-        with open("data/"+self.logname+".log", "r+") as f:
-            total = 0
-            for t in f.readlines():
-                total += int(t)
-            print(f"Total {total}", file=f)
