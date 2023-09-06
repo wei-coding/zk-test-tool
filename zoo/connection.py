@@ -2,8 +2,9 @@ from kazoo.client import KazooClient
 import time
 from . import parse_size
 
-def zoo_client(host, port = 2181, name = "a", size = "1K", times=30, logname="testset.log"):
-    zk = KazooClient(hosts=f"{host}:{port}")
+def zoo_client(hosts, port = 2181, name = "a", size = "1K", times=30, logname="testset.log"):
+    hosts_str = ",".join([f"{h}:{port}" for h in hosts])
+    zk = KazooClient(hosts=hosts_str)
     zk.start()
     for i in range(times):
         f = open("data/"+logname, "a+")

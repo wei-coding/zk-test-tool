@@ -1,5 +1,6 @@
 import threading
 from .connection import zoo_client
+from .stress_test import zoo_read_write_test
 from .name_gen import NameGenerator
 
 class TestSet:
@@ -16,3 +17,27 @@ class TestSet:
             t.start()
         for t in self.client_list:
             t.join()
+
+class StressTestSet:
+    def __init__(self, host, port, size, n_thread, start=0, read_portion=0.0, logname="stress_testset") -> None:
+        self.client_list: list[threading.Thread] = []
+        self.logname = logname
+        ng = NameGenerator(n_thread, start)
+        open("data/"+logname+".log", "w")
+        for _ in range(n_thread):
+            name = ng.next()
+            t = threading.Thread(target=zoo_read_write_test, args=(host, port, name, size, 30, read_portion, logname))
+            t.setName(f"Thread-{name}")
+            self.client_list.append(t)
+    
+    def start_all(self):
+        for t in self.client_list:
+            t.start()
+        for t in self.client_list:
+            t.join()
+
+        with open("data/"+self.logname+".log", "r+") as f:
+            total = 0
+            for t in f.readlines():
+                total += int(t)
+            print(f"Total {total}", file=f)

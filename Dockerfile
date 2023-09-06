@@ -4,4 +4,4 @@ COPY . /src
 WORKDIR /src
 RUN pip install -r requirements.txt
 
-CMD [ "/bin/bash" ]
+ENTRYPOINT [ "python3", "zktest.py" ]
