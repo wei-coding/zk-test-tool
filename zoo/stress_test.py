@@ -33,4 +33,4 @@ def zoo_read_write_test(hosts, port = 2181, name='a', size='1K', time_limit=30, 
         now_time = time.time()
     zk.stop()
     with open("data/"+log_name+".log", "a+") as f:
-        print(f"{counter//30} {total_latency/write_counter} {bad_counter} {counter}", file=f)
+        print(f"{counter/30} {total_latency/write_counter} {bad_counter} {counter}", file=f)
