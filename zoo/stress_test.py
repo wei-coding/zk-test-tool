@@ -1,5 +1,4 @@
 from kazoo.client import KazooClient
-from kazoo.exceptions import KazooException
 import time
 import random
 from zoo.parse_size import parse
@@ -27,8 +26,7 @@ def zoo_read_write_test(hosts, port = 2181, name='a', size='1K', time_limit=30, 
                 write_counter += 1
             else:
                 zk.get(f"/read_write_test/{name}")
-        except KazooException as e:
-            print(e)
+        except Exception as e:
             bad_counter += 1
         
         counter += 1
