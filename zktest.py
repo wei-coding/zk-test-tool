@@ -3,7 +3,6 @@ from zoo.testset import TestSet, StressTestSet
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("hostfile", type=str)
     parser.add_argument("-p", "--port", type=int)
     parser.add_argument("-s", "--start", type=int)
     parser.add_argument("size", type=str)
@@ -24,6 +23,7 @@ def main():
             l = l.strip()
             if l != "" and not l.startswith('#'):
                 hosts.append(l)
+                print(l)
     if not args.stress_mode:
         test = TestSet(hosts, port, args.size, args.n_threads, args.start, log_filename)
         test.start_all()
