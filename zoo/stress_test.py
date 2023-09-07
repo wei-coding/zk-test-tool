@@ -4,6 +4,7 @@ import random
 from zoo.parse_size import parse
 
 def zoo_read_write_test(hosts, port = 2181, name='a', size='1K', time_limit=30, read_portion=0, log_name='stress_testset.log'):
+    print(hosts)
     hosts_str = ",".join([f"{h}:{port}" for h in hosts])
     zk = KazooClient(hosts=hosts_str)
     zk.start()

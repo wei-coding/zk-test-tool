@@ -22,7 +22,7 @@ def main():
     with open('conf/host.conf') as f:
         for l in f.readlines():
             l = l.strip()
-            if l and not l.startswith('#'):
+            if l != "" and not l.startswith('#'):
                 hosts.append(l)
     if not args.stress_mode:
         test = TestSet(hosts, port, args.size, args.n_threads, args.start, log_filename)
