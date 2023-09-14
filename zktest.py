@@ -23,7 +23,7 @@ def main():
             l = l.strip()
             if l != "" and not l.startswith('#'):
                 hosts.append(l)
-                print(l)
+                # print(l)
     if not args.stress_mode:
         test = TestSet(hosts, port, args.size, args.n_threads, args.start, log_filename)
         test.start_all()

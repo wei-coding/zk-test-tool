@@ -8,7 +8,7 @@ class NameGenerator:
                 self.name_list.append(chr(ord('a') + idx))
             else:
                 self.name_list.append(chr(ord('a') + (idx // 26 - 1)) + chr(ord('a') + idx % 26))
-        print(self.name_list)
+        # print(self.name_list)
 
     def next(self):
         self.idx += 1
