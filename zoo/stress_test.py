@@ -27,10 +27,9 @@ def zoo_read_write_test(hosts, port = 2181, name='a', size='1K', time_limit=30, 
                 write_counter += 1
             else:
                 zk.get(f"/read_write_test/{name}")
+            counter += 1
         except Exception as e:
             bad_counter += 1
-        
-        counter += 1
         now_time = time.time()
     zk.stop()
     with open("data/"+log_name+".log", "a+") as f:
