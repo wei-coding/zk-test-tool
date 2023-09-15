@@ -10,7 +10,7 @@ def zoo_read_write_test(hosts, port = 2181, name='a', size='1K', time_limit=30, 
     zk.start()
     zk.ensure_path("/read_write_test")
     zk.create(f"/read_write_test/{name}", value=b"x"*parse(size), ephemeral=True)
-    random.seed(100)
+    random.seed(time.time())
     counter = 0
     bad_counter = 0
     write_counter = 0
