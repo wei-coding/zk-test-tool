@@ -24,7 +24,7 @@ class StressTestSet:
         self.logname = logname
         open("data/"+logname+".log", "w")
         for i in range(n_thread):
-            t = threading.Thread(target=zoo_read_write_test, args=(host, port, f"t-{i}", size, 30, read_portion, logname))
+            t = threading.Thread(target=zoo_read_write_test, args=(host, port, f"t-{start+i}", size, 30, read_portion, logname))
             t.setName(f"Thread-{i}")
             self.client_list.append(t)
     
