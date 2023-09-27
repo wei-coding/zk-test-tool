@@ -22,12 +22,10 @@ class StressTestSet:
     def __init__(self, host, port, size, n_thread, start=0, read_portion=0.0, logname="stress_testset") -> None:
         self.client_list: list[threading.Thread] = []
         self.logname = logname
-        ng = NameGenerator(n_thread, start)
         open("data/"+logname+".log", "w")
-        for _ in range(n_thread):
-            name = ng.next()
-            t = threading.Thread(target=zoo_read_write_test, args=(host, port, name, size, 30, read_portion, logname))
-            t.setName(f"Thread-{name}")
+        for i in range(n_thread):
+            t = threading.Thread(target=zoo_read_write_test, args=(host, port, f"t-{i}", size, 30, read_portion, logname))
+            t.setName(f"Thread-{i}")
             self.client_list.append(t)
     
     def start_all(self):

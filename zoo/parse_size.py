@@ -5,4 +5,4 @@ def parse(size_str: str) -> int:
     return number * scaler
 
 if __name__ == "__main__":
-    print(parse('1000K'))
+    print(parse('1K'))
